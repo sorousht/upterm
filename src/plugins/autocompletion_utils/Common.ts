@@ -167,7 +167,7 @@ const filesSuggestions = (filter: (info: FileInfo) => boolean) => async(tokenVal
         });
     }
 
-    const tokenDirectory = directoryName(tokenValue);
+    const tokenDirectory = escapeFilePath(directoryName(tokenValue));
     const basePath = tokenValue.slice(tokenDirectory.length);
     const directoryPath = resolveDirectory(directory, tokenDirectory);
     const stats = await io.lstatsIn(directoryPath);
